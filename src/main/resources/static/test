@@ -1,0 +1,72 @@
+ @GetMapping("/test")
+//    @ResponseBody
+    public String test(){
+
+        // family object
+        Family family = new Family("1" );
+
+        // person Object
+
+        Person person1 = new Person("per01" ,"", "Radheshyam" , "Bharud" , "Head" , "Self" , "Male" , "15/02/1952" , 68 , "Bharud",
+                "Bharud" , "5th" , "DairyFarm owner" , "https://s4.scoopwhoop.com/anj/AM/497999168.png" , "married" ,false);
+
+        person1.setFamily(family);
+
+        Person person2 = new Person("per02" , "Mohan" , "" , "Bharud" , "Self" , "Son" , "Male" , "15/02/1972" , 48 , "Bharud",
+                "Bharud" , "12th" , "Kirana shop" , "https://s4.scoopwhoop.com/anj/AM/497999168.png" , "married" ,false);
+
+        person2.setFamily(family);
+
+        Person person3 = new Person("per03" , "Radheshyam" , "" , "Bharud" , "self" , "Son" , "Male" , "15/02/1980" , 40 , "Bharud",
+                "Bharud" , "5th" , "DairyFarm owner" , "https://s4.scoopwhoop.com/anj/AM/497999168.png" , "married" );
+
+        person3.setFamily(family);
+
+        //Mobile number object
+
+        MobileNumbers mobileNumber1 = new MobileNumbers("9990134712" , NumberType.HOME , false);
+        mobileNumber1.setPerson(person1);
+        MobileNumbers mobileNumber2 = new MobileNumbers("9990134713" , NumberType.SHOP , false);
+        mobileNumber2.setPerson(person1);
+        MobileNumbers mobileNumber3 = new MobileNumbers("9990134714" , NumberType.SHOP , true);
+        mobileNumber3.setPerson(person1);
+
+        MobileNumbers mobileNumber4 = new MobileNumbers("999013171" , NumberType.HOME , false);
+        mobileNumber4.setPerson(person2);
+        MobileNumbers mobileNumber5 = new MobileNumbers("999013712" , NumberType.SHOP , true);
+        mobileNumber5.setPerson(person2);
+
+        MobileNumbers mobileNumber6 = new MobileNumbers("9917108076" , NumberType.SHOP , true);
+        mobileNumber6.setPerson(person3);
+
+
+
+        person1.getMobileNumbers().add(mobileNumber1);
+        person1.getMobileNumbers().add(mobileNumber2);
+        person1.getMobileNumbers().add(mobileNumber3);
+
+
+        person2.getMobileNumbers().add(mobileNumber4);
+        person2.getMobileNumbers().add(mobileNumber5);
+
+        person3.getMobileNumbers().add(mobileNumber6);
+
+        family.getMember().add(person1);
+        family.getMember().add(person2);
+        family.getMember().add(person3);
+        family.setTotalMembers(family.getMember().size());
+
+        //Address Object
+
+        Address address1 = new Address("Nanuram" , "Dhanger" , AddressType.valueOf("Home") , "House no 20 , near shiv mandir" , "mangalwariya" , "Kukshi" , "dhar" , "Madhya Pradesh" , 454331 , "India");
+        Address address2 = new Address("Nanuram" , "Dhanger" , AddressType.valueOf("Home"),"Shop no 20 , opposite shiv mandir near cinema choupati" , "near cinema choupati" , "Kukshi" , "dhar" , "Madhya Pradesh" , 454331 , "India");
+
+        address1.setFamily(family);
+        address2.setFamily(family);
+
+        family.getAddresses().add(address1);
+        family.getAddresses().add(address2);
+
+        familyDao.saveFamily(family);
+        return "test";
+    }
