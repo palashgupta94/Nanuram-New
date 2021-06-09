@@ -177,11 +177,14 @@ public class HomeController {
     }
 
     @GetMapping("/updateFamily/{familyId}")
-    public String update(@PathVariable("familyId") String familyId){
+    public String update(@PathVariable("familyId") String familyId , Model model){
 
+        Family family = familyService.getFamilyById(familyId);
+        model.addAttribute("family",family);
+        model.addAttribute("rowNum" , family.getTotalMembers());
+        model.addAttribute("rd", ReferenceHelper.referenceData());
 
-
-        return  null;
+        return  "showFamilyCopy";
     }
 
 

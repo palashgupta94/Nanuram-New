@@ -19,7 +19,7 @@ public class PersonDaoImpl implements PersonDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private EntityManager manager = sessionFactory.createEntityManager();
+//    private EntityManager manager = sessionFactory.createEntityManager();
 
     @Override
     public Person getPersonDetails(String personId) {
