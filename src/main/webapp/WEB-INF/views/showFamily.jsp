@@ -29,7 +29,7 @@
 
 <div class="formContainer mt-3" >
 
-    <form:form action="save" method="post"  enctype="multipart/form-data" modelAttribute="family">
+    <form:form action="save" method="post"  enctype="multipart/form-data" modelAttribute="w">
 
         <div class="table-responsive">
 

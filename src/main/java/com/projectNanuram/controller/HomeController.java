@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.FileOutputStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +42,7 @@ public class HomeController {
 
         int rowNum = (int) model.asMap().get("rowValue");
         System.out.println("rownum :" + rowNum);
-        model.addAttribute(wrapper);
+        model.addAttribute("wrapper" , wrapper);
         model.addAttribute("rowNum", rowNum);
 
         model.addAttribute("rd", ReferenceHelper.referenceData());
@@ -176,15 +173,44 @@ public class HomeController {
 
     }
 
-    @GetMapping("/updateFamily/{familyId}")
-    public String update(@PathVariable("familyId") String familyId , Model model){
+//    @GetMapping("/updateFamily/{familyId}")
+    @GetMapping("/showBooks")
+    public String update(Model model){
+//        @PathVariable("familyId") String familyId , Model model
+//        Family family = familyService.getFamilyById(familyId);
+//        model.addAttribute("family" , family);
+//        model.addAttribute("member" , family.getMember());
+//        model.addAttribute("rowNum" , family.getTotalMembers());
+//        model.addAttribute("rd", ReferenceHelper.referenceData());
+//        model.addAttribute("message" , "Person Information Update");
+//        System.out.println(family.getMember().get(0).getFirstName());
 
-        Family family = familyService.getFamilyById(familyId);
-        model.addAttribute("family",family);
-        model.addAttribute("rowNum" , family.getTotalMembers());
-        model.addAttribute("rd", ReferenceHelper.referenceData());
+        List<Book>bookList = new ArrayList<>();
+        Book book1 = new Book("Golden Eye",  "Ian Fleming");
+        Book book2 = new Book("Golden Eye",  "Ian Fleming");
+        Book book3 = new Book("Golden Eye",  "Ian Fleming");
+        Book book4 = new Book("Golden Eye",  "Ian Fleming");
 
-        return  "showFamilyCopy";
+        bookList.add(book1);
+        bookList.add(book2);
+        bookList.add(book3);
+        bookList.add(book4);
+
+        BookWrapper wrapper = new BookWrapper();
+        wrapper.setBookList(bookList);
+//        model.addAttribute("bookWrapper" , wrapper);
+        model.addAttribute("wrapper" , wrapper);
+        return "showBook";
+
+    }
+    @PostMapping("/saveBook")
+//    public void saveBook(@ModelAttribute("newBook")Book newBook){
+    public String saveBook(@ModelAttribute("wrapper")BookWrapper wrapper){
+        System.out.print(wrapper.getBookList().get(0).getTitle());
+//        System.out.println(newBook.getTitle());
+//        System.out.println(newBook.getAuthor());
+        return "success";
+
     }
 
 

@@ -31,7 +31,7 @@ public class WebConfig implements WebMvcConfigurer {
         irvr.setViewClass(JstlView.class);
         irvr.setPrefix("/WEB-INF/views/");
         irvr.setSuffix(".jsp");
-        irvr.setOrder(0);
+        irvr.setOrder(1);
         return irvr;
     }
 
@@ -56,7 +56,7 @@ public class WebConfig implements WebMvcConfigurer {
     public ViewResolver thymeleafViewResolver(){
         ThymeleafViewResolver vr = new ThymeleafViewResolver();
         vr.setTemplateEngine(templateEngine());
-        vr.setOrder(1);
+        vr.setOrder(0);
         return vr;
     }
 
@@ -64,7 +64,8 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver srtr = new SpringResourceTemplateResolver();
         srtr.setApplicationContext(applicationContext);
-        srtr.setPrefix("/WEB-INF/views/thymeleafTemplates");
+
+        srtr.setPrefix("/WEB-INF/views/thymeleafTemplates/");
         srtr.setSuffix(".html");
         return srtr;
     }
