@@ -206,7 +206,6 @@ public class HomeController {
         BookWrapper wrapper = new BookWrapper();
         wrapper.setBookList(bookList);
         wrapper.setColorList(colorList);
-        model.addAttribute("bookWrapper" , wrapper);
         model.addAttribute("wrapper" , wrapper);
         
         return "showBook";
@@ -214,7 +213,7 @@ public class HomeController {
     }
     @PostMapping("/saveBook")
 //    public void saveBook(@ModelAttribute("newBook")Book newBook){
-    public String saveBook(@ModelAttribute("newwrapper")BookWrapper wrapper){
+    public String saveBook(@ModelAttribute("wrapper")BookWrapper wrapper){
        for (Book book: wrapper.getBookList()) {
     	   System.out.print("title: "+book.getTitle()+ ", ");
     	   System.out.print("author: "+book.getAuthor()+ " ");
@@ -226,7 +225,7 @@ public class HomeController {
     	   System.out.print("code: " + colort.getColorCode() + " ");
     	   System.out.println();
        }
-        return "redirect:/showBook";
+        return "showBook";
 
     }
 
