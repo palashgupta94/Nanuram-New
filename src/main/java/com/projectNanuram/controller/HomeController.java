@@ -187,19 +187,28 @@ public class HomeController {
 
         List<Book>bookList = new ArrayList<>();
         Book book1 = new Book("Golden Eye",  "Ian Fleming");
-        Book book2 = new Book("Golden Eye",  "Ian Fleming");
-        Book book3 = new Book("Golden Eye",  "Ian Fleming");
-        Book book4 = new Book("Golden Eye",  "Ian Fleming");
+        Book book2 = new Book("Golden Eye",  "Jian Fleming");
+        Book book3 = new Book("Golden Eye",  "Bhag, Doareman hain");
+        Book book4 = new Book("Golden Eye",  "Suzuka Fleming");
 
+        ColorTest color1 = new ColorTest("c1", "RED");
+        ColorTest color2 = new ColorTest("c1", "BLUE");
+        
         bookList.add(book1);
         bookList.add(book2);
         bookList.add(book3);
         bookList.add(book4);
+        
+        List<ColorTest>colorList = new ArrayList<>();
+        colorList.add(color1);
+        colorList.add(color2);
 
         BookWrapper wrapper = new BookWrapper();
         wrapper.setBookList(bookList);
+        wrapper.setColorList(colorList);
         model.addAttribute("bookWrapper" , wrapper);
         model.addAttribute("wrapper" , wrapper);
+        
         return "showBook";
 
     }
@@ -212,8 +221,11 @@ public class HomeController {
     	   System.out.println();
        }
         
-//        System.out.println(newBook.getTitle());
-//        System.out.println(newBook.getAuthor());
+       for (ColorTest colort: wrapper.getColorList()) {
+    	   System.out.print("id: "+ colort.getColorId() + ", ");
+    	   System.out.print("code: " + colort.getColorCode() + " ");
+    	   System.out.println();
+       }
         return "redirect:/showBook";
 
     }

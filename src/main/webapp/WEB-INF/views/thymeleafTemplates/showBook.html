@@ -28,6 +28,15 @@
        </td>
         </tr>
 
+        <tr th:each="book,stat : *{colorList}">
+        <td>
+          <input type="text" th:field="*{colorList[__${stat.index}__].colorId}" />
+        </td>
+        
+        <td>  
+          <input type="text" th:field="*{colorList[__${stat.index}__].colorCode}" />
+       </td>
+        </tr>
 
         </tbody>
     </table>
