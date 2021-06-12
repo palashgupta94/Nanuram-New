@@ -13,21 +13,19 @@
         <thead>
         <tr>
 
-            <th scope="col">Title</th>
+            <th scope="col">MyTitle</th>
             <th scope="col">Author</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="book,i : ${wrapper.getBookList()}">
-            <td>
-
-                title : <input type="text" th:value="${wrapper.getBookList().get(i.index).title}" name="title">
-
-            </td>
-            <td>
-                author: <input type="text" th:value="${wrapper.getBookList().get(i.index).author}" name="author">
-            </td>
-
+        <tr th:each="book,stat : *{bookList}">
+        <td>
+          <input type="text" th:field="*{bookList[__${stat.index}__].title}" />
+        </td>
+        
+        <td>  
+          <input type="text" th:field="*{bookList[__${stat.index}__].author}" />
+       </td>
         </tr>
 
 

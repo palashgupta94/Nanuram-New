@@ -198,18 +198,23 @@ public class HomeController {
 
         BookWrapper wrapper = new BookWrapper();
         wrapper.setBookList(bookList);
-//        model.addAttribute("bookWrapper" , wrapper);
+        model.addAttribute("bookWrapper" , wrapper);
         model.addAttribute("wrapper" , wrapper);
         return "showBook";
 
     }
     @PostMapping("/saveBook")
 //    public void saveBook(@ModelAttribute("newBook")Book newBook){
-    public String saveBook(@ModelAttribute("wrapper")BookWrapper wrapper){
-        System.out.print(wrapper.getBookList().get(0).getTitle());
+    public String saveBook(@ModelAttribute("newwrapper")BookWrapper wrapper){
+       for (Book book: wrapper.getBookList()) {
+    	   System.out.print("title: "+book.getTitle()+ ", ");
+    	   System.out.print("author: "+book.getAuthor()+ " ");
+    	   System.out.println();
+       }
+        
 //        System.out.println(newBook.getTitle());
 //        System.out.println(newBook.getAuthor());
-        return "success";
+        return "redirect:/showBook";
 
     }
 

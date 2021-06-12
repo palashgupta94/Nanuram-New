@@ -528,9 +528,9 @@
                                                 <div class="col-md-6">
                                                     <label class="form-label">Type</label>
                                                     <form:select path="addresses[0].addressType" class ="form-select">
-                                                        <%--                                                        <form:option value="">Choose...</form:option>--%>
-                                                        <option selected="${family.addresses.get(0).addressType}"
-                                                        <form:options items="${rd.get('addressTypeMap')}" />
+                                                        <%-- <form:option value="">Choose...</form:option> --%>
+                                                        <option selected="${family.addresses.get(0).addressType}" > </option>
+                                                        <form:options items="${rd.get('addressTypeMap')}"></form:options>
                                                     </form:select>
                                                 </div>
 
