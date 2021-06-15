@@ -40,7 +40,7 @@
 
                             person.setMobileNumbers(mobilenumberProcessor(mobileNumbersList, person) );
 
-                            person.setImgUrl(imageProcessor(person));
+                            imageProcessor(person);
 
                         }
 
@@ -53,15 +53,26 @@
             return personList;
         }
 
-        private static String imageProcessor(Person person) {
+//----------------------------------------------------------------------------------------------------------------------
+
+        private static void imageProcessor(Person person ) {
             String path = null;
             try{
             CommonsMultipartFile file = person.getImageFile();
-            path = "H:\\uploads\\"+file.getOriginalFilename();
+            String filename = file.getOriginalFilename();
+            System.out.println(file.getOriginalFilename());
+            String[]str = filename.split("\\.");
+            for(String st : str) System.out.print(st+" ");
+            str[1] = "."+str[1];
+            String baseDirPath = PropertiesResolver.getInstance().getBaseFilePath();
+            String newFileName = person.getPersonId()+str[1];
+            path = baseDirPath+newFileName;
             byte[] bytes = file.getBytes();
             FileOutputStream fos = new FileOutputStream(path);
             fos.write(bytes);
             fos.close();
+            person.setImgUrl(newFileName);
+            ImageHelper.resizeImage(newFileName);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -69,8 +80,9 @@
             catch (IOException e){
                 e.printStackTrace();
             }
-            return path;
+
         }
+//----------------------------------------------------------------------------------------------------------------------
 
         private static List<MobileNumbers> mobilenumberProcessor(List<MobileNumbers> mobileNumbersList , Person person) {
             List<MobileNumbers> newlist = new ArrayList<>();
@@ -94,6 +106,7 @@
             return newlist;
 
         }
+//----------------------------------------------------------------------------------------------------------------------
 
         private static void ageProcessor(Person person){
 

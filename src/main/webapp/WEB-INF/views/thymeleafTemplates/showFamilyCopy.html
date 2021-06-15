@@ -41,7 +41,7 @@
 
 <div class="formContainer mt-3" >
 
-    <form action="#" th:action="@{/save}" th:object="${wrapper}" method="post" enctype="multipart/form-data"  >
+    <form action="#" th:action="@{/save}" th:object="${family}" method="post" enctype="multipart/form-data"  >
 
         <div class="table-responsive">
 
@@ -58,14 +58,14 @@
                     <th >Gender</th>
                     <th >DOB</th>
                     <th >Family Gotra</th>
-                    <th >Age</th>
+<!--                    <th >Age</th>-->
                     <th >Mother Gotra</th>
                     <th >Education</th>
                     <th >Occupation</th>
                     <th >Marital Status</th>
                     <th >Special Ability</th>
-                    <th > Mobile Number</th>
-                    <th>Image</th>
+<!--                    <th > Mobile Number</th>-->
+<!--                    <th>Image</th>-->
 
                 </tr>
 
@@ -82,46 +82,36 @@
 <!--                %>-->
 
 
-                <tr th:each="person , iterStat : ${member}">
+                <tr th:each="person , iterStat : *{members}">
 
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get()}"
+                            <input th:field="*{members[__${iterStat.index}__].firstName}"
                                         type="text"
                                         class="form-control"
                                         placeholder="First Name"
-
                                          />
-
-
                         </div>
                     </td>
-
-                            <%--                ---------------------------------------------------------------------------------------------%>
+                    <%--  ---------------------------------------------------------------------------------------------%>
 
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{middleName}"
+                            <input th:field="*{members[__${iterStat.index}__].middleName}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Middle Name"
-
                             />
-
-
 
                         </div>
                     </td>
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).lastName}"
+                            <input th:field="*{members[__${iterStat.index}__].lastName}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Last name"
-                                        name="lastName"
-                                        th:value="${family.member.get(iterStat).lastName}"
-
                             />
 
                         </div>
@@ -129,12 +119,10 @@
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).status}"
+                            <input th:field="*{members[__${iterStat.index}__].status}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Status"
-                                        name="status"
-                                        th:value="${family.member.get(iterStat).status}"
                             />
 
                         </div>
@@ -142,64 +130,61 @@
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).relationWithHead}"
+                            <input th:field="*{members[__${iterStat.index}__].relationWithHead}"
                                    type="text"
                                    class="form-control"
                                    placeholder="Relation with head"
-                                   name="relationWithHead"
-                                   th:value="${family.member.get(iterStat).relationWithHead}"
                             />
 
                         </div>
+                    </td>
+
+                    <td>
 
                         <div class="input-group input-group-md">
 
-                            <select th:field="*{member.get(iterStat).gender}" class="form-select" name="gender">
+                            <select th:field="*{members[__${iterStat.index}__].gender}" class="form-select" name="gender">
 
                                 <option value="">Gender...</option>
-                                <option th:selected="${family.member.get(iterStat).gender}"></option>
-                                <option value="Male"></option>
-                                <option value="Female"></option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
 
                             </select>
                         </div>
 
                     </td>
 
-
+<!-- --------------------------------------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md" >
-                            <input th:field="*{member.get(iterStat).DOB}"
+                            <input th:field="*{members[__${iterStat.index}__].DOB}"
                                         type="text"
                                         class="form-control dobSelect"
                                         placeholder="Date of Birth"
-                                        name="DOB"
-                                        th:value="${family.member.get(iterStat).DOB}"
+
                             />
 
                         </div>
                     </td>
                     <!-- ----------------------------------------------------------------------------------- -->
-                    <td>
-                        <div class="input-group input-group-md">
+<!--                    <td>-->
+<!--                        <div class="input-group input-group-md">-->
 
-                            <select th:field="*{member.get(iterStat).age}" class = "form-select" name="age" >
-                                <option value="">Select Age</option>
-                                <option th:each="age : ${rd.get('ageMap')}" th:value="${age}" th:text="${age}"></option>
+<!--                            <select th:field="*{members[__${iterStat.index}__].age}" class = "form-select" >-->
+<!--                                <option value="">Select Age</option>-->
+<!--                                <option th:each="age : *{rd.get('ageMap')}" th:value="${age}" th:text="${age}"></option>-->
 
-                            </select>
-                        </div>
-                    </td>
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </td>-->
 
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).familyGotra}"
+                            <input th:field="*{members[__${iterStat.index}__].familyGotra}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Family Gotra"
-                                        name="familyGotra"
-                                        th:value="${family.member.get(iterStat).familyGotra}"
                             />
 
                         </div>
@@ -207,12 +192,10 @@
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).motherGotra}"
+                            <input th:field="*{members[__${iterStat.index}__].motherGotra}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Mother Gotra"
-                                        name="motherGotra"
-                                        th:value="${family.member.get(iterStat).motherGotra}"
                             />
 
                         </div>
@@ -221,12 +204,10 @@
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).educationalStatus}"
+                            <input th:field="*{members[__${iterStat.index}__].educationalStatus}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Education"
-                                        name="educationalStatus"
-                                        th:value="${family.member.get(iterStat).educationalStatus}"
 
                             />
 
@@ -235,12 +216,10 @@
                     <!-- ----------------------------------------------------------------------------------- -->
                     <td>
                         <div class="input-group input-group-md">
-                            <input th:field="*{member.get(iterStat).occupation}"
+                            <input th:field="*{members[__${iterStat.index}__].occupation}"
                                         type="text"
                                         class="form-control"
                                         placeholder="Occupation"
-                                        name="occupation"
-                                        th:value="${family.member.get(iterStat).occupation}"
                             />
 
                         </div>
@@ -249,11 +228,11 @@
                     <td>
                         <div class="input-group input-group-md">
 
-                            <select th:field="*{member.get(iterstat).maritalStatus}" class ="form-select" >
+                            <select th:field="*{members[__${iterStat.index}__].maritalStatus}" class ="form-select" >
 
-                                <option th:selected="${family.member.get(iterStat).maritalStatus}"></option>
-                                <option value="Married"></option>
-                                <option value="Unmarried"></option>
+<!--                                <option th:selected="${family.member.get(iterStat).maritalStatus}"></option>-->
+                                <option value="Married">Married</option>
+                                <option value="Unmarried">Unmarried</option>
 
                             </select>
                         </div>
@@ -264,9 +243,9 @@
                         <div class="input-group input-group-md">
 
 
-                            <select th:field="*{member.get(iterStat).specialAbility}" class = "form-select" >
+                            <select th:field="*{members[__${iterStat.index}__].specialAbility}" class = "form-select" >
 
-                                <option th:selected="${family.member.get(iterStat).speciallyAble}"></option>
+<!--                                <option th:selected="${family.member.get(iterStat).speciallyAble}"></option>-->
                                 <option value="false">No</option>
                                 <option value="true">Yes</option>
 
@@ -297,140 +276,139 @@
                                     <div class="modal-body">
 
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-                                        <div class="input-group mb-3" id="0-div">
+                                        <div th:each="number , i : *{member[__${iterStat.index}__].mobileNumbers}" class="input-group mb-3" id="${i.index}-div">
 
-                                            <div class="input-group-prepend" id="0-selectTypeDiv">
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[0].type}"
-                                                             class="form-select"
-                                                             name="member.get(iterStat).mobileNumbers[0].type"
-                                                             id="0-type" >
+<!--                                            <div class="input-group-prepend" id="0-selectTypeDiv">-->
+<!--                                                <select th:field="*{mobileNumbers[__${i.index}__].type}"-->
+<!--                                                             class="form-select"-->
 
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(0).type}"></option>
-                                                    <option th:each=" i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}" ></option>
-                                                </select>
-                                            </div>
+<!--                                                             id="${i.index}-type" >-->
 
-                                            <input th:field="*{member.get(iterStat).mobileNumbers[0].mobileNumber}"
+
+<!--                                                    <option th:each=" m, i : ${rd.get('typeMap')}" th:value="${m}" th:text="${m}" ></option>-->
+
+<!--                                                </select>-->
+<!--                                            </div>-->
+
+                                            <input th:field="*{mobileNumbers[__${i.index}__].mobilenumber}"
                                                         type="text"
                                                         class="form-control"
                                                         placeholder="Mobile Number"
-                                                        name="member.get(iterStat).mobileNumbers[0].mobileNumber"
-                                                        th:value="${family.member.get(iterStat).mobileNumbers.get(0).mobileNumber}"
-                                                        id="0-input"
+                                                        id=${i.index}+"-input"
                                             />
 
 
-                                            <div class="input-group-append" id="0-selectPrimaryDiv">
+<!--                                            <div class="input-group-append" id="0-selectPrimaryDiv">-->
 
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[0].primaryString}"
-                                                             class="form-select"
-                                                             name="members.get(iterStat).mobileNumbers[0].primaryString"
-                                                             id="0-primaryString" >
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(0).primary}"></option>
-                                                    <option th:each=" i: ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}"></option>
+<!--                                                <select th:field="*{mobileNumbers[__${i.index}__].primaryString}"-->
+<!--                                                             class="form-select"-->
 
-                                                </select>
+<!--                                                             id="${i.index}-primaryString">-->
 
-                                            </div>
+<!--                                                    <option th:each=" m,i: ${rd.get('primaryMap')}" th:value="${m}" th:text="${m}"></option>-->
+
+<!--                                                </select>-->
+
+<!--                                            </div>-->
                                         </div>
 
 
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
-                                        <div class="input-group mb-3" id="1-div">
-                                            <div class="input-group-prepend" id="1-selectTypeDiv">
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[1].type}"
-                                                             class="form-select"
-                                                             name="members.get(iterStat).mobileNumbers[1].type"
-                                                             id="i-type"
-                                                >
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(1).type}" ></option>
-                                                    <option th:each="i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}"></option>
-                                                </select>
-                                            </div>
+<!--                                        <div class="input-group mb-3" id="1-div">-->
+<!--                                            <div class="input-group-prepend" id="1-selectTypeDiv">-->
+<!--                                                <select th:field="*{member.get(iterStat).mobileNumbers[1].type}"-->
+<!--                                                             class="form-select"-->
+<!--                                                             name="members.get(iterStat).mobileNumbers[1].type"-->
+<!--                                                             id="i-type"-->
+<!--                                                >-->
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(1).type}" ></option>-->
+<!--                                                    <option th:each="i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}"></option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
 
-                                            <input th:field="*{member.get(iterStat).mobileNumbers[1].mobileNumber}"
-                                                   type="text"
-                                                   class="form-control"
-                                                   id="1-input"
-                                                   placeholder="Mobile Number"
-                                                   th:value="${family.member.get(iterStat).mobileNumbers.get(1).mobileNumber}"
-                                            />
+<!--                                            <input th:field="*{member.get(iterStat).mobileNumbers[1].mobileNumber}"-->
+<!--                                                   type="text"-->
+<!--                                                   class="form-control"-->
+<!--                                                   id="1-input"-->
+<!--                                                   placeholder="Mobile Number"-->
+<!--                                                   th:value="${family.member.get(iterStat).mobileNumbers.get(1).mobileNumber}"-->
+<!--                                            />-->
 
-                                            <div class="input-group-append" id="1-selectPrimaryDiv">
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[1].primaryString}" class="form-select" id="1-PrimaryString">
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(1).primary}"></option>
-                                                    <option th:each=" i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}"></option>
-                                                </select>
+<!--                                            <div class="input-group-append" id="1-selectPrimaryDiv">-->
+<!--                                                <select th:field="*{member.get(iterStat).mobileNumbers[1].primaryString}" class="form-select" id="1-PrimaryString">-->
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(1).primary}"></option>-->
+<!--                                                    <option th:each=" i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}"></option>-->
+<!--                                                </select>-->
 
-                                            </div>
-                                        </div>
+<!--                                            </div>-->
+<!--                                        </div>-->
 
 
 <!-- ------------------------------------------------------------------------------------------------------------ -->
 
 
-                                        <div class="input-group mb-3" id="2-div">
+<!--                                        <div class="input-group mb-3" id="2-div">-->
 
-                                            <div class="input-group-prepend" id="2-selectTypeDiv">
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[2].type}" class="form-select" id="2-type" >
+<!--                                            <div class="input-group-prepend" id="2-selectTypeDiv">-->
+<!--                                                <select th:field="*{member.get(iterStat).mobileNumbers[2].type}" class="form-select" id="2-type" >-->
 
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(2).type}" ></option>
-                                                    <option th:each=" i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}" > </option>
-                                                </select>
-                                            </div>
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(2).type}" ></option>-->
+<!--                                                    <option th:each=" i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}" > </option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
 
-                                            <input th:field="*{member.get(iterStat).mobileNumbers[2].mobileNumber}"
-                                                        type="text"
-                                                        class="form-control"
-                                                        id="2-input"
-                                                        placeholder="Mobile Number"
-                                                        th:value="${family.member.get(iterStat).mobileNumbers.get(2).mobileNumber}"
-                                            />
+<!--                                            <input th:field="*{member.get(iterStat).mobileNumbers[2].mobileNumber}"-->
+<!--                                                        type="text"-->
+<!--                                                        class="form-control"-->
+<!--                                                        id="2-input"-->
+<!--                                                        placeholder="Mobile Number"-->
+<!--                                                        th:value="${family.member.get(iterStat).mobileNumbers.get(2).mobileNumber}"-->
+<!--                                            />-->
 
-                                            <div class="input-group-append" id="2-selectPrimaryDiv">
+<!--                                            <div class="input-group-append" id="2-selectPrimaryDiv">-->
 
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[2].primaryString}" class="form-select" id="2-primaryString">
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(2).primary}"></option>
-                                                    <option th:each=" i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}"> </option>
-                                                </select>
+<!--                                                <select th:field="*{member.get(iterStat).mobileNumbers[2].primaryString}" class="form-select" id="2-primaryString">-->
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(2).primary}"></option>-->
+<!--                                                    <option th:each=" i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}"> </option>-->
+<!--                                                </select>-->
 
-                                            </div>
+<!--                                            </div>-->
 
-                                        </div>
+<!--                                        </div>-->
                                         <%-- -------------------------------------------------------------------------------------------  --%>
 
-                                        <div class="input-group mb-3" id="3-div">
+<!--                                        <div class="input-group mb-3" id="3-div">-->
 
-                                            <div class="input-group-prepend" id="3-selectTypeDiv">
+<!--                                            <div class="input-group-prepend" id="3-selectTypeDiv">-->
 
-                                                <select th:field="*{member.get(iterStat).mobileNumbers[3].type}" class="form-select" id="3-type" >
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(3).type}"></option>
-                                                    <option th:each=" i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}" ></option>
-                                                </select>
+<!--                                                <select th:field="*{member.get(iterStat).mobileNumbers[3].type}" class="form-select" id="3-type" >-->
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(3).type}"></option>-->
+<!--                                                    <option th:each=" i : ${rd.get('typeMap')}" th:value="${i}" th:text="${i}" ></option>-->
+<!--                                                </select>-->
 
-                                            </div>
+<!--                                            </div>-->
 
 
-                                            <input th:field="*{member.get(iterStat).mobileNumbers[3].mobileNumber}"
-                                                   type="text"
-                                                   class="form-control"
-                                                   placeholder="Mobile Number"
-                                                   th:value="${family.member.get(iterStat).mobileNumbers.get(3).mobileNumber}"
-                                                   id="3-input"
-                                            />
+<!--                                            <input th:field="*{member.get(iterStat).mobileNumbers[3].mobileNumber}"-->
+<!--                                                   type="text"-->
+<!--                                                   class="form-control"-->
+<!--                                                   placeholder="Mobile Number"-->
+<!--                                                   th:value="${family.member.get(iterStat).mobileNumbers.get(3).mobileNumber}"-->
+<!--                                                   id="3-input"-->
+<!--                                            />-->
 
-                                            <div class="input-group-append"id="3-selectPrimaryDiv">
+<!--                                            <div class="input-group-append"id="3-selectPrimaryDiv">-->
 
-                                                <select path="member[${i}].mobileNumbers[3].primaryString" class="form-select" id="3-primaryString">
+<!--                                                <select path="member[${i}].mobileNumbers[3].primaryString" class="form-select" id="3-primaryString">-->
 
-                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(3).primary}"></option>
-                                                    <option th:each="i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}" ></option>
-                                                </select>
+<!--                                                    <option th:selected="${family.member.get(iterStat).mobileNumbers.get(3).primary}"></option>-->
+<!--                                                    <option th:each="i : ${rd.get('primaryMap')}" th:value="${i}" th:text="${i}" ></option>-->
+<!--                                                </select>-->
 
-                                            </div>
-                                        </div>
+<!--                                            </div>-->
+<!--                                        </div>-->
 
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 

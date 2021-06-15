@@ -42,7 +42,7 @@ public class HomeController {
 
         int rowNum = (int) model.asMap().get("rowValue");
         System.out.println("rownum :" + rowNum);
-        model.addAttribute("wrapper" , wrapper);
+        model.addAttribute("personWrapper" , wrapper);
         model.addAttribute("rowNum", rowNum);
 
         model.addAttribute("rd", ReferenceHelper.referenceData());
@@ -77,7 +77,7 @@ public class HomeController {
     public String save(@ModelAttribute("wrapper") PersonWrapper wrapper, Model model) {
 
         try {
-            String familyId = wrapper.getMembers().get(0).getFamily().getFamilyId();
+
             if(wrapper.getMembers().get(0).getFamily() == null || wrapper.getMembers().get(0).getFamily().getFamilyId()==null
             || wrapper.getMembers().get(0).getFamily().getFamilyId().isEmpty()) {
                 family.setFamilyId(IdentityHelper.familyIdGenerator());
@@ -91,7 +91,7 @@ public class HomeController {
             List<Address> addressList = wrapper.getAddresses();
 
             List<Person>newPersonList = Processor.personprocessor(personList , family);
-            family.setMember(newPersonList);
+            family.setMembers(newPersonList);
             family.setTotalMembers(newPersonList.size());
             family.setAddresses(Processor.addressProcessor(addressList,family));
 
@@ -111,7 +111,7 @@ public class HomeController {
         for(Family family : allFamily){
             System.out.println(family.getTotalMembers());
             System.out.println(family.getFamilyId());
-            List<Person> members = family.getMember();
+            List<Person> members = family.getMembers();
 
             for(Person person : members){
                 System.out.println(person.getFirstName());
@@ -126,7 +126,7 @@ public class HomeController {
         Family family = familyService.getFamilyById(familyId);
         System.out.println(family.getTotalMembers());
 
-        List<Person> members = family.getMember();
+        List<Person> members = family.getMembers();
         for(Person person : members){
             System.out.println(person.getFirstName());
         }
@@ -193,12 +193,12 @@ public class HomeController {
 
         ColorTest color1 = new ColorTest("c1", "RED");
         ColorTest color2 = new ColorTest("c1", "BLUE");
-        
+
         bookList.add(book1);
         bookList.add(book2);
         bookList.add(book3);
         bookList.add(book4);
-        
+
         List<ColorTest>colorList = new ArrayList<>();
         colorList.add(color1);
         colorList.add(color2);
@@ -207,7 +207,7 @@ public class HomeController {
         wrapper.setBookList(bookList);
         wrapper.setColorList(colorList);
         model.addAttribute("wrapper" , wrapper);
-        
+
         return "showBook";
 
     }
@@ -219,7 +219,7 @@ public class HomeController {
     	   System.out.print("author: "+book.getAuthor()+ " ");
     	   System.out.println();
        }
-        
+
        for (ColorTest colort: wrapper.getColorList()) {
     	   System.out.print("id: "+ colort.getColorId() + ", ");
     	   System.out.print("code: " + colort.getColorCode() + " ");
@@ -229,6 +229,24 @@ public class HomeController {
 
     }
 
+    @GetMapping("/update/{familyId}")
+    public String updateFamily(@PathVariable("familyId")String familyId , Model model){
+        Family family = familyService.getFamilyById(familyId);
+        model.addAttribute("family",family);
+        model.addAttribute("message" , "Person Information Update");
+        model.addAttribute("rd",ReferenceHelper.referenceData());
+        return "showFamilyCopy";
+    }
+
+    @GetMapping("/showFamily/{familyId}")
+    public String showFamily(@PathVariable("familyId") String familyId , Model model){
+
+        Family family = familyService.getFamilyById(familyId);
+        model.addAttribute("family", family);
+        return "index";
+
+
+    }
 
 
 

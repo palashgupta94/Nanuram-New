@@ -495,7 +495,7 @@
 
                                             <div class="col-md-6">
                                                 <label for="inputType" class="form-label">Type</label>
-                                                <form:select path="addresses[0].addressType" class ="form-select">
+                                                <form:select path="addresses[0].addressType" class ="form-select" id="inputType">
                                                     <form:option value="">Choose...</form:option>
                                                     <form:options items="${rd.get('addressTypeMap')}" />
                                                 </form:select>

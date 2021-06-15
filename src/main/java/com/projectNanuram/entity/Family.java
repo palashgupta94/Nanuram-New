@@ -45,11 +45,11 @@ public class Family {
         this.totalMembers = totalMembers;
     }
 
-    public List<Person> getMember() {
+    public List<Person> getMembers() {
         return members;
     }
 
-    public void setMember(List<Person> members) {
+    public void setMembers(List<Person> members) {
         this.members = members;
     }
 

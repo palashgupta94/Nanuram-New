@@ -31,7 +31,7 @@ public class WebConfig implements WebMvcConfigurer {
         irvr.setViewClass(JstlView.class);
         irvr.setPrefix("/WEB-INF/views/");
         irvr.setSuffix(".jsp");
-        irvr.setOrder(1);
+        irvr.setOrder(0);
         return irvr;
     }
 
@@ -56,7 +56,7 @@ public class WebConfig implements WebMvcConfigurer {
     public ViewResolver thymeleafViewResolver(){
         ThymeleafViewResolver vr = new ThymeleafViewResolver();
         vr.setTemplateEngine(templateEngine());
-        vr.setOrder(0);
+        vr.setOrder(1);
         return vr;
     }
 
