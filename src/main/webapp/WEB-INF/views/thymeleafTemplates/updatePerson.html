@@ -27,7 +27,7 @@
                       method="post">
                     <div class="row">
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 border border-dark">
 
                             <div class="form-group col-md-12">
 
@@ -143,52 +143,51 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row ms-3" >
                                     <label for="currentImage" class="col-form-label">Current image</label>
                                     <div class="col-md-6 mt-1" id="currentImage">
                                         <img th:src="@{${person.imgUrl}}" src="" alt="">
                                     </div>
-                                </div>
-                                <div >
-                                        <label for="inputImage" class="col-form-label justify-content-center">Update
-                                            Image</label>
-                                        <input th:field="*{imageFile}" class="form-control justify-content-center mt-2" id="inputImage" type="file">
+                                <div>
+                                    <label for="inputImage" class="col-form-label justify-content-center">Update
+                                        Image</label>
+                                    <input th:field="*{imageFile}" class="form-control justify-content-center mt-2"
+                                           id="inputImage" type="file">
 
                                 </div>
                             </div>
 
-<!--                            <div class="row mt-1">-->
+                            <!--                            <div class="row mt-1">-->
 
-<!--                                <h3 class="text-center">Mobile Number</h3>-->
+                            <!--                                <h3 class="text-center">Mobile Number</h3>-->
 
-<!--                                <div class="input-group mb-3" th:each="mn , i : *{person.mobileNumbers}">-->
-<!--                                    <div class="input-group-prepend">-->
-<!--                                        <select th:field="*{person.mobileNumbers[__${i.index}__].}" class="form-select" id="3-type" >-->
-<!--                                            <option th:each="var : ${rd.get('typeMap').values()}"-->
-<!--                                            th:value="${var}"-->
-<!--                                            th:text="${var}">-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <input th:field="*{mn[__${i.index}__].mobileNumber}" type="text" class="form-control" placeholder="Mobile Number" />-->
+                            <!--                                <div class="input-group mb-3" th:each="mn , i : *{person.mobileNumbers}">-->
+                            <!--                                    <div class="input-group-prepend">-->
+                            <!--                                        <select th:field="*{person.mobileNumbers[__${i.index}__].}" class="form-select" id="3-type" >-->
+                            <!--                                            <option th:each="var : ${rd.get('typeMap').values()}"-->
+                            <!--                                            th:value="${var}"-->
+                            <!--                                            th:text="${var}">-->
+                            <!--                                        </select>-->
+                            <!--                                    </div>-->
+                            <!--                                    <input th:field="*{mn[__${i.index}__].mobileNumber}" type="text" class="form-control" placeholder="Mobile Number" />-->
 
-<!--                                    <div class="input-group-append">-->
-<!--                                        <select th:field="*{mn[__${i.index}__].primary}" class="form-select">-->
-<!--                                            <option th:each="var : ${rd.get('primaryMap').values()}" th:value="${var}" th:text="${var}">-->
-<!--                                        </select>-->
+                            <!--                                    <div class="input-group-append">-->
+                            <!--                                        <select th:field="*{mn[__${i.index}__].primary}" class="form-select">-->
+                            <!--                                            <option th:each="var : ${rd.get('primaryMap').values()}" th:value="${var}" th:text="${var}">-->
+                            <!--                                        </select>-->
 
-<!--                                    </div>-->
-                                </div>
-
-                            </div>
-
+                            <!--                                    </div>-->
                         </div>
 
                     </div>
-                </form>
+
             </div>
+
         </div>
+        </form>
     </div>
+</div>
+</div>
 </div>
 
 
