@@ -39,14 +39,14 @@ public class PropertiesResolver {
     }
 
 
-    private String baseUrl;
+    private String hostUrl;
     private String baseFilePath;
     private Map<String , List<String>> imageProperties;
 
     private PropertiesResolver(Properties _props){
 
 
-        baseUrl = (String)_props.get("baseUrl");
+        hostUrl = (String)_props.get("hostUrl");
         baseFilePath = (String)_props.get("baseFilePath");
         processResolutions((String)_props.get("imageProperties"));
 
@@ -68,8 +68,8 @@ public class PropertiesResolver {
 
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
+    public String getHostUrl() {
+        return hostUrl;
     }
 
     public String getBaseFilePath() {

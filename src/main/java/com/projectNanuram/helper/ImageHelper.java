@@ -88,7 +88,7 @@ public class ImageHelper {
         }
 
     }
-    private static String getFilePath(String fileName , List<String> list){
+    public static String getFilePath(String fileName , List<String> list){
 
         String[] str = fileName.split("\\.");
         str[1] = "."+str[1];
@@ -107,6 +107,15 @@ public class ImageHelper {
         if(!(dir.exists() && dir.isDirectory())){
             dir.mkdir();
         }
+    }
+
+    public static String getHostUrl(String fileName , List<String> list){   //http://localhost:8887/family/xPXcS_1440_796.jpg
+
+        String[] str = fileName.split("\\.");
+        str[1] = "."+str[1];
+        String hostUrl = PropertiesResolver.getInstance().getHostUrl();
+        String url = hostUrl+list.get(0)+"/"+str[0]+"_"+list.get(1)+"_"+list.get(2)+str[1];
+        return url;
     }
 
 

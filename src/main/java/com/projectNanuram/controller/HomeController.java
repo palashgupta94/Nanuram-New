@@ -242,6 +242,15 @@ public class HomeController {
     public String showFamily(@PathVariable("familyId") String familyId , Model model){
 
         Family family = familyService.getFamilyById(familyId);
+        PropertiesResolver resolver = PropertiesResolver.getInstance();
+        Map<String, List<String>> imageProperties = resolver.getImageProperties();
+
+        for(Person person : family.getMembers()){
+            String url = ImageHelper.getHostUrl(person.getImgUrl() , imageProperties.get("family"));
+            System.out.println(url);
+            person.setImgUrl(url);
+        }
+
         model.addAttribute("family", family);
         return "index";
 

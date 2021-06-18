@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:h3th="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Person Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/bootstrap.min.css"
+    th:href="@{/resources/static/meetMe/assets/css/bootstrap.min.css}">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/fonts/font-awesome.min.css"
+    th:href="@{/resources/static/meetMe/assets/fonts/font-awesome.min.css}">
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/fonts/simple-line-icons.css"
+    th:href="@{/resources/static/meetMe/assets/fonts/simple-line-icons.css}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/slicknav.css"
+    th:href="@{/resources/static/meetMe/assets/css/slicknav.css}">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/nivo-lightbox.css"
+    th:href="@{/resources/static/meetMe/assets/css/nivo-lightbox.css}">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/animate.css"
+    th:href="@{/resources/static/meetMe/assets/css/animate.css}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/main.css"
+    th:href="@{/resources/static/meetMe/assets/css/main.css}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/responsive.css"
+    th:href="@{/resources/static/meetMe/assets/css/responsive.css}">
+
+  </head>
+  <body>
+
+    <!-- About Section Start -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">
+              <img class="img-fluid" src=""
+                   th:src="@{${person.imgUrl}}" alt="personImage">
+            </div>
+          </div> 
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
+              <h3 th:text="${person.fullName}"></h3>
+              <div class="about-profile">
+                <ul class="admin-profile">
+<!--                  <li><span class="pro-title"> Name </span> <span th:text="" class="pro-detail"></span></li>-->
+                  <li><span class="pro-title"> Date of Birth </span> <span th:text="${person.DOB}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Occupation </span> <span th:text="${person.occupation}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Marital Status </span> <span th:text="${person.maritalStatus}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Mother's Gotra </span> <span th:text="${person.motherGotra}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Family's Gotra </span> <span th:text="${person.familyGotra}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Special Ability</span> <span th:text="${person.specialAbility}" class="pro-detail"></span></li>
+                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>
+                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>
+                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>
+                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>
+                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>
+                </ul>
+              </div>
+              <a href="#" class="btn btn-common"><i class="icon-paper-clip"></i> Download Resume</a>
+              <a href="#" class="btn btn-danger"><i class="icon-speech"></i> Contact Me</a>
+            </div>
+          </div>   
+        </div>
+      </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Go to Top Link -->
+    <!-- <a href="#" class="back-to-top">
+    	<i class="icon-arrow-up"></i>
+    </a> -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/resources/static/meetMe/assets/js/jquery-min.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery-min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/popper.min.js"
+    th:src="@{/resources/static/meetMe/assets/js/popper.min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/bootstrap.min.js"
+    th:src="@{/resources/static/meetMe/assets/js/bootstrap.min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/jquery.mixitup.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery.mixitup.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/jquery.counterup.min.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery.counterup.min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/waypoints.min.js"
+    th:src="@{/resources/static/meetMe/assets/js/waypoints.min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/wow.js"
+    th:src="@{/resources/static/meetMe/assets/js/wow.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/jquery.nav.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery.nav.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/jquery.easing.min.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery.easing.min.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/nivo-lightbox.js"
+    th:src="@{/resources/static/meetMe/assets/js/nivo-lightbox.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/jquery.slicknav.js"
+    th:src="@{/resources/static/meetMe/assets/js/jquery.slicknav.js}"></script>
+    <script src="/resources/static/meetMe/assets/js/main.js"
+    th:src="@{/resources/static/meetMe/assets/js/main.js}"></script>
+     
+  </body>
+</html>

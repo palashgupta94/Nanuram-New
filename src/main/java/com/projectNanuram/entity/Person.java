@@ -74,19 +74,20 @@ public class Person {
     @Transient
     private CommonsMultipartFile imageFile;
 
-
     @NotNull(message = "Marital Status could not be empty or null")
     private String maritalStatus;
 
-    @Nullable
     @AssertFalse()
+    @Transient
     private boolean isSpeciallyAble;
 
     @NotNull
     @Value("No")
+
     private String specialAbility;
 
-//    private String mobileNumber;
+    @Transient
+    private String fullName;
     
     private boolean isMan;
     private boolean isWoman;
@@ -348,7 +349,13 @@ public class Person {
         isHead = head;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     @Override
     public String toString() {
