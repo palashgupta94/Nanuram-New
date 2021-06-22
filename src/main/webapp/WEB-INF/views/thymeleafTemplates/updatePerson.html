@@ -19,15 +19,19 @@
 
 <body>
 <div class="container my-5">
-    <h3> Update Student</h3>
-    <div class="card">
-        <div class="card-body">
-            <div class="col-md-8">
-                <form action="#" th:action="@{/person/updateperson/{id}(id=${person.personId})}" th:object="${person}"
-                      method="post">
-                    <div class="row">
+    <h3> Update Person</h3>
 
-                        <div class="col-md-6 border border-dark">
+    <form action="#" th:action="@{/person/updatePerson/{id}(id=${person.personId})}" th:object="${person}"
+          method="post">
+        <div class="row">
+
+
+            <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
 
                             <div class="form-group col-md-12">
 
@@ -35,39 +39,39 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="firstName" class="col-form-label">First Name</label>
-                                <input type="text" th:field="*{firstName}" class="form-control" id="firstName"
+                                <label for="firstName1" class="col-form-label">First Name</label>
+                                <input type="text" th:field="*{firstName}" class="form-control" id="firstName1"
                                        placeholder="First Name">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="middleName" class="col-form-label">Middle Name</label>
-                                <input type="text" th:field="*{middleName}" class="form-control" id="middleName"
+                                <label for="middleName1" class="col-form-label">Middle Name</label>
+                                <input type="text" th:field="*{middleName}" class="form-control" id="middleName1"
                                        placeholder="Middle Name">
 
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="lastName" class="col-form-label">Last Name</label>
-                                <input type="text" th:field="*{lastName}" class="form-control" id="lastName"
+                                <label for="lastName1" class="col-form-label">Last Name</label>
+                                <input type="text" th:field="*{lastName}" class="form-control" id="lastName1"
                                        placeholder="Last Name">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="status" class="col-form-label">Status</label>
-                                <input type="text" th:field="*{status}" class="form-control" id="status"
+                                <label for="status1" class="col-form-label">Status</label>
+                                <input type="text" th:field="*{status}" class="form-control" id="status1"
                                        placeholder="Status">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="relationWithHead" class="col-form-label">Relation With Head</label>
+                                <label for="relationWithHead1" class="col-form-label">Relation With Head</label>
                                 <input type="text" th:field="*{relationWithHead}" class="form-control"
-                                       id="relationWithHead" placeholder="Relation With Head">
+                                       id="relationWithHead1" placeholder="Relation With Head">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="genderSelect" class="col-form-label">Relation With Head</label>
-                                <select class="form-select" aria-label="Gender select" id="genderSelect"
+                                <label for="genderSelect1" class="col-form-label">Relation With Head</label>
+                                <select class="form-select" aria-label="Gender select" id="genderSelect1"
                                         th:field="*{gender}">
                                     <option value="">Gender...</option>
                                     <option value="Male">Male</option>
@@ -76,14 +80,14 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="dob" class="col-form-label">Date of Birth</label>
-                                <input type="text" th:field="*{DOB}" class="form-control" id="dob"
+                                <label for="dob1" class="col-form-label">Date of Birth</label>
+                                <input type="text" th:field="*{DOB}" class="form-control" id="dob1"
                                        placeholder="Date of Birth">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="age" class="col-form-label">Age</label>
-                                <select class="form-select" aria-label="Age select" id="age" th:field="*{age}">
+                                <label for="age1" class="col-form-label">Age</label>
+                                <select class="form-select" aria-label="Age select" id="age1" th:field="*{age}">
                                     <option th:each="var : ${rd.get('ageMap').values()}"
                                             th:value="${var}"
                                             th:text="${var}">Age
@@ -92,32 +96,32 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="familyGotra" class="col-form-label">Family's Gotra</label>
-                                <input type="text" th:field="*{familyGotra}" class="form-control" id="familyGotra"
+                                <label for="familyGotra1" class="col-form-label">Family's Gotra</label>
+                                <input type="text" th:field="*{familyGotra}" class="form-control" id="familyGotra1"
                                        placeholder="Family's Gotra">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="motherGotra" class="col-form-label">Mother's Gotra</label>
-                                <input type="text" th:field="*{motherGotra}" class="form-control" id="motherGotra"
+                                <label for="motherGotra1" class="col-form-label">Mother's Gotra</label>
+                                <input type="text" th:field="*{motherGotra}" class="form-control" id="motherGotra1"
                                        placeholder="Family's Gotra">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="education" class="col-form-label">Education</label>
-                                <input type="text" class="form-control" id="education" th:field="*{educationalStatus}"
+                                <label for="education1" class="col-form-label">Education</label>
+                                <input type="text" class="form-control" id="education1" th:field="*{educationalStatus}"
                                        placeholder="Education"/>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="occupation" class="col-form-label">Occupation</label>
-                                <input type="text" th:field="*{occupation}" class="form-control" id="occupation"
+                                <label for="occupation1" class="col-form-label">Occupation</label>
+                                <input type="text" th:field="*{occupation}" class="form-control" id="occupation1"
                                        placeholder="Occupation">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="maritalStatusSelect" class="col-form-label">Marital Status</label>
-                                <select class="form-select" aria-label="marital status select" id="maritalStatusSelect"
+                                <label for="maritalStatusSelect1" class="col-form-label">Marital Status</label>
+                                <select class="form-select" aria-label="marital status select" id="maritalStatusSelect1"
                                         th:field="*{maritalStatus}">
                                     <option value="">marital Status</option>
                                     <option value="Married">Married</option>
@@ -126,9 +130,9 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="specialAbilityselect" class="col-form-label">Special Ability</label>
+                                <label for="specialAbilityselect1" class="col-form-label">Special Ability</label>
                                 <select class="form-select" aria-label="special ability select"
-                                        id="specialAbilitySelect"
+                                        id="specialAbilitySelect1"
                                         th:field="*{specialAbility}">
                                     <option value="">Specially Abled</option>
                                     <option value="No">No</option>
@@ -137,67 +141,82 @@
                             </div>
 
 
-                            <div class="form-group col-md-12 mt-3">
-                                <input type="submit" class="btn btn-primary" value="Update Student">
-                            </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="col-md-6">
-                            <div class="row ms-3" >
-                                    <label for="currentImage" class="col-form-label">Current image</label>
-                                    <div class="col-md-6 mt-1" id="currentImage">
-                                        <img th:src="@{${person.imgUrl}}" src="" alt="">
-                                    </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row ms-3">
+                                <label for="currentImage" class="col-form-label">Current image</label>
+                                <div class="col-md-8 mt-1" id="currentImage">
+                                    <img th:src="@{${person.imgUrl}}" src="" alt="">
+                                </div>
                                 <div>
                                     <label for="inputImage" class="col-form-label justify-content-center">Update
                                         Image</label>
                                     <input th:field="*{imageFile}" class="form-control justify-content-center mt-2"
                                            id="inputImage" type="file">
-
                                 </div>
                             </div>
 
-                            <!--                            <div class="row mt-1">-->
+                            <div class="row mt-3 ml-5 justify-content-center">
 
-                            <!--                                <h3 class="text-center">Mobile Number</h3>-->
+                                <h3 class="text-center mt-3">Mobile Number</h3>
 
-                            <!--                                <div class="input-group mb-3" th:each="mn , i : *{person.mobileNumbers}">-->
-                            <!--                                    <div class="input-group-prepend">-->
-                            <!--                                        <select th:field="*{person.mobileNumbers[__${i.index}__].}" class="form-select" id="3-type" >-->
-                            <!--                                            <option th:each="var : ${rd.get('typeMap').values()}"-->
-                            <!--                                            th:value="${var}"-->
-                            <!--                                            th:text="${var}">-->
-                            <!--                                        </select>-->
-                            <!--                                    </div>-->
-                            <!--                                    <input th:field="*{mn[__${i.index}__].mobileNumber}" type="text" class="form-control" placeholder="Mobile Number" />-->
+                                <table class="table mt-3">
+                                    <thead>
+                                    <tr>
 
-                            <!--                                    <div class="input-group-append">-->
-                            <!--                                        <select th:field="*{mn[__${i.index}__].primary}" class="form-select">-->
-                            <!--                                            <option th:each="var : ${rd.get('primaryMap').values()}" th:value="${var}" th:text="${var}">-->
-                            <!--                                        </select>-->
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Mobile Number</th>
+                                        <th scope="col">Primary</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+<!--                                    <tr th:each="mn,i : *{mobileNumbers}">-->
+<!--                                        <td>-->
+<!--                                            <select class="form-select"  th:field="*{mobileNumbers[__${i.index}__].type}">-->
+<!--                                                <option th:each="var:${rd.get('primaryMap').values()}" th:value="${var}" th:text="${var}">-->
 
-                            <!--                                    </div>-->
+<!--                                            </select>-->
+<!--                                        </td>-->
+
+<!--                                        <td>-->
+
+<!--                                            <input type="text" class="form-control" th:field="*{mobileNumbers[__${i.index}__].mobileNumber}"-->
+<!--                                                   placeholder="Number"/>-->
+<!--                                        </td>-->
+
+<!--                                        <td>-->
+
+<!--                                            <select class="form-select"  th:field="*{mobileNumbers[__${i.index}__].primary}">-->
+<!--                                                <option th:each="var:${rd.get('typeMap').values()}" th:value="${var}" th:text="${var}">-->
+
+<!--                                            </select>-->
+
+<!--                                        </td>-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-
                     </div>
-
+                </div>
             </div>
-
         </div>
-        </form>
-    </div>
-</div>
-</div>
+    </form>
 </div>
 
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js}"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js}"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
-
-<script th:src="@{/resources/static/js/dobselect.js}"></script>
+    <script th:src="@{/resources/static/js/dobselect.js}"></script>
 </body>
 
 </html>

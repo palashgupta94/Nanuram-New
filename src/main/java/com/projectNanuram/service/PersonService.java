@@ -27,4 +27,5 @@ public interface PersonService {
 
     public void delete(String PersonId);
 
+    public List<Person> getHeads();
 }

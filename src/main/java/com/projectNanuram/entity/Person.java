@@ -78,12 +78,12 @@ public class Person {
     private String maritalStatus;
 
     @AssertFalse()
-    @Transient
+
     private boolean isSpeciallyAble;
 
     @NotNull
     @Value("No")
-
+//    @Transient
     private String specialAbility;
 
     @Transient
@@ -96,7 +96,7 @@ public class Person {
     private boolean isSenior;
     private boolean isHead=false;
 
-    @OneToMany (cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToMany (cascade = CascadeType.ALL , fetch = FetchType.EAGER, mappedBy = "person")
     private List<MobileNumbers> mobileNumbers = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL )

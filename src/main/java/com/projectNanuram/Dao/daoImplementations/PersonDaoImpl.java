@@ -83,6 +83,16 @@ public class PersonDaoImpl implements PersonDao {
         return addresses;
     }
 
+    public List<Person> getHeads(){
+
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select p from Person as p where p.isHead=true";
+        Query query = session.createQuery(hql);
+        List<Person> heads = (List<Person>)query.getResultList();
+        return heads;
+
+    }
+
     @Override
     public void savePerson(Person person) {
         Session session = sessionFactory.getCurrentSession();

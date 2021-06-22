@@ -27,5 +27,7 @@ public interface PersonDao {
 
     public void delete(String PersonId);
 
+    public List<Person> getHeads();
+
 
 }

@@ -25,8 +25,6 @@ public class HomeController {
         System.out.println("Hello");
     }
 
-    @Autowired
-    private FamilyDao familyDao;
 
     @Autowired
     private FamilyService familyService;
@@ -174,60 +172,7 @@ public class HomeController {
     }
 
 //    @GetMapping("/updateFamily/{familyId}")
-    @GetMapping("/showBooks")
-    public String update(Model model){
-//        @PathVariable("familyId") String familyId , Model model
-//        Family family = familyService.getFamilyById(familyId);
-//        model.addAttribute("family" , family);
-//        model.addAttribute("member" , family.getMember());
-//        model.addAttribute("rowNum" , family.getTotalMembers());
-//        model.addAttribute("rd", ReferenceHelper.referenceData());
-//        model.addAttribute("message" , "Person Information Update");
-//        System.out.println(family.getMember().get(0).getFirstName());
 
-        List<Book>bookList = new ArrayList<>();
-        Book book1 = new Book("Golden Eye",  "Ian Fleming");
-        Book book2 = new Book("Golden Eye",  "Jian Fleming");
-        Book book3 = new Book("Golden Eye",  "Bhag, Doareman hain");
-        Book book4 = new Book("Golden Eye",  "Suzuka Fleming");
-
-        ColorTest color1 = new ColorTest("c1", "RED");
-        ColorTest color2 = new ColorTest("c1", "BLUE");
-
-        bookList.add(book1);
-        bookList.add(book2);
-        bookList.add(book3);
-        bookList.add(book4);
-
-        List<ColorTest>colorList = new ArrayList<>();
-        colorList.add(color1);
-        colorList.add(color2);
-
-        BookWrapper wrapper = new BookWrapper();
-        wrapper.setBookList(bookList);
-        wrapper.setColorList(colorList);
-        model.addAttribute("wrapper" , wrapper);
-
-        return "showBook";
-
-    }
-    @PostMapping("/saveBook")
-//    public void saveBook(@ModelAttribute("newBook")Book newBook){
-    public String saveBook(@ModelAttribute("wrapper")BookWrapper wrapper){
-       for (Book book: wrapper.getBookList()) {
-    	   System.out.print("title: "+book.getTitle()+ ", ");
-    	   System.out.print("author: "+book.getAuthor()+ " ");
-    	   System.out.println();
-       }
-
-       for (ColorTest colort: wrapper.getColorList()) {
-    	   System.out.print("id: "+ colort.getColorId() + ", ");
-    	   System.out.print("code: " + colort.getColorCode() + " ");
-    	   System.out.println();
-       }
-        return "showBook";
-
-    }
 
     @GetMapping("/update/{familyId}")
     public String updateFamily(@PathVariable("familyId")String familyId , Model model){
@@ -247,7 +192,6 @@ public class HomeController {
 
         for(Person person : family.getMembers()){
             String url = ImageHelper.getHostUrl(person.getImgUrl() , imageProperties.get("family"));
-            System.out.println(url);
             person.setImgUrl(url);
         }
 
