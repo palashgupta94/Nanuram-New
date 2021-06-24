@@ -21,8 +21,7 @@
 <div class="container my-5">
     <h3> Update Person</h3>
 
-    <form action="#" th:action="@{/person/updatePerson/{id}(id=${person.personId})}" th:object="${person}"
-          method="post">
+    <form th:action="@{/person/updatePerson}" th:object="${person}" method="post">
         <div class="row">
 
 
@@ -36,6 +35,10 @@
                             <div class="form-group col-md-12">
 
                                 <input type="hidden" th:field="*{personId}" class="form-control">
+                            </div>
+                            <div class="form-group col-md-12">
+
+                                <input type="hidden" th:field="*{family.familyId}" class="form-control">
                             </div>
 
                             <div class="form-group col-md-12">
@@ -81,7 +84,7 @@
 
                             <div class="form-group col-md-12">
                                 <label for="dob1" class="col-form-label">Date of Birth</label>
-                                <input type="text" th:field="*{DOB}" class="form-control" id="dob1"
+                                <input type="text" th:field="*{DOB}" class="form-control .dobSelect" id="dob1"
                                        placeholder="Date of Birth">
                             </div>
 
@@ -149,18 +152,18 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <div class="row ms-3">
-                                <label for="currentImage" class="col-form-label">Current image</label>
-                                <div class="col-md-8 mt-1" id="currentImage">
-                                    <img th:src="@{${person.imgUrl}}" src="" alt="">
-                                </div>
-                                <div>
-                                    <label for="inputImage" class="col-form-label justify-content-center">Update
-                                        Image</label>
-                                    <input th:field="*{imageFile}" class="form-control justify-content-center mt-2"
-                                           id="inputImage" type="file">
-                                </div>
-                            </div>
+<!--                            <div class="row ms-3">-->
+<!--                                <label for="currentImage" class="col-form-label">Current image</label>-->
+<!--                                <div class="col-md-8 mt-1" id="currentImage">-->
+<!--                                    <img th:src="@{${person.imgUrl}}" src="" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <label for="inputImage" class="col-form-label justify-content-center">Update-->
+<!--                                        Image</label>-->
+<!--                                    <input th:field="*{imageFile}" class="form-control justify-content-center mt-2"-->
+<!--                                           id="inputImage" type="file">-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <div class="row mt-3 ml-5 justify-content-center">
 
@@ -176,28 +179,43 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<!--                                    <tr th:each="mn,i : *{mobileNumbers}">-->
-<!--                                        <td>-->
-<!--                                            <select class="form-select"  th:field="*{mobileNumbers[__${i.index}__].type}">-->
-<!--                                                <option th:each="var:${rd.get('primaryMap').values()}" th:value="${var}" th:text="${var}">-->
 
-<!--                                            </select>-->
-<!--                                        </td>-->
+                                    <tr th:each="mn,i : *{mobileNumbers}">
+                                        <td>
+                                            <div>
+                                                <select class="form-select" th:field="*{mobileNumbers[__${i.index}__].type}">
+                                                    <option th:each="var:${rd.get('typeMap').values()}"
+                                                            th:value="${var}"
+                                                            th:text="${var}">
 
-<!--                                        <td>-->
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </td>
 
-<!--                                            <input type="text" class="form-control" th:field="*{mobileNumbers[__${i.index}__].mobileNumber}"-->
-<!--                                                   placeholder="Number"/>-->
-<!--                                        </td>-->
+                                        <td>
 
-<!--                                        <td>-->
+                                            <div>
+                                                <input type="text" class="form-control"
+                                                       th:field="*{mobileNumbers[__${i.index}__].mobileNumber}"
+                                                       placeholder="Number"/>
+                                            </div>
 
-<!--                                            <select class="form-select"  th:field="*{mobileNumbers[__${i.index}__].primary}">-->
-<!--                                                <option th:each="var:${rd.get('typeMap').values()}" th:value="${var}" th:text="${var}">-->
+                                        </td>
 
-<!--                                            </select>-->
+                                        <td>
 
-<!--                                        </td>-->
+                                            <div>
+                                                <select class="form-select"
+                                                        th:field="*{mobileNumbers[__${i.index}__].primary}">
+                                                    <option th:each="var:${rd.get('primaryMap').values()}"
+                                                            th:value="${var}"
+                                                            th:text="${var}">
+
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -206,17 +224,24 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+
+                <div class="d-grid mt-3">
+                    <button class="btn btn-outline-secondary" type="submit">Update</button>
+                </div>
+
+            </div>
         </div>
     </form>
 </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-            th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js}"
-            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-            crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js}"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 
-    <script th:src="@{/resources/static/js/dobselect.js}"></script>
+<script th:src="@{/resources/static/js/dobSelect.js}"></script>
 </body>
 
 </html>

@@ -100,8 +100,20 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public Person updatePerson(String id) {
-        return null;
+    public void updatePerson(Person person) {
+
+        Session session = sessionFactory.getCurrentSession();
+//
+//        Query query = session.createQuery("update Person as p set p.firstName=:firstName and p.middleName =:middleName and p.lastName=:lastName" +
+//        "and p.status=:status and p.relationWithHead=:relationWithHead and p.gender=:gender and p.DOB=:DOB and p.age=:age" +
+//                "and p.familyGotra=familyGotra and p.motherGotra=:motherGotra and p.education=:education and p.occupation=:occupation" +
+//                "and p.maritalStatus=:maritalStatus and p.specialAbility=:specialAbility and p.mobileNumber=:mobileNumber and " +
+//                "p.imgUrl=:imgUrl and person.family.familyId =:familyId where p.personId=:personId");
+        session.saveOrUpdate(person);
+//        query.setParameter()
+
+
+
     }
 
     @Override

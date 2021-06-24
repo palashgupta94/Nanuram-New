@@ -1,6 +1,7 @@
 package com.projectNanuram.controller;
 
 import com.projectNanuram.entity.Family;
+import com.projectNanuram.entity.MobileNumbers;
 import com.projectNanuram.entity.Person;
 import com.projectNanuram.helper.ImageHelper;
 import com.projectNanuram.helper.PropertiesResolver;
@@ -9,9 +10,7 @@ import com.projectNanuram.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -72,17 +71,32 @@ public class PersonController {
 
         model.addAttribute("rd" , ReferenceHelper.referenceData());
         model.addAttribute(person);
+//        model.addAttribute("mobileNumber" , person.getMobileNumbers());
         return "updatePerson";
 
     }
 
-    @GetMapping("/updatePerson/{personId}")
-    public String updatePerson(@PathVariable("personId") String personId , Model model){
+    @PostMapping("/updatePerson")
+    public String updatePerson(@ModelAttribute("person") Person person ,  Model model){
 
-        Person person = personService.updatePerson(personId);
+        System.out.println("person id --> "+ person.getPersonId());
+        String personId1 = person.getPersonId();
+        System.out.println(person.getFamily());
+
+        for(MobileNumbers mn : person.getMobileNumbers()){
+
+            mn.setId(person.getPersonId()+person.getMobileNumbers().indexOf(mn));
+            mn.setPerson(person);
+
+        }
+        if(person.getImageFile() == null){
+            person.setImgUrl("ina.jpg");
+        }
+
+        personService.updatePerson(person);
+
         model.addAttribute("person" , person);
-        model.addAttribute("numbers" , person.getMobileNumbers());
-        return "personProfile";
+        return "redirect:/person/getPersonDetails/"+personId1;
     }
 
     @GetMapping("/getAllHeads")

@@ -24,7 +24,7 @@ public class MobileNumbers {
     @NotNull
     private boolean isPrimary;
     @Transient
-    @NotNull
+//    @NotNull
     private String primaryString;
 
     @ManyToOne

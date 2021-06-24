@@ -23,11 +23,11 @@ public interface PersonDao {
 
     public void savePerson(Person person);
 
-    public Person updatePerson(String id);
+//    public Person updatePerson(String id , Person person);
 
     public void delete(String PersonId);
 
     public List<Person> getHeads();
 
-
+    public void updatePerson(Person person);
 }

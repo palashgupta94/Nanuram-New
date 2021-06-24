@@ -23,7 +23,7 @@ public interface PersonService {
 
     public void savePerson(Person person);
 
-    public Person updatePerson(String id);
+    public void updatePerson(Person person);
 
     public void delete(String PersonId);
 

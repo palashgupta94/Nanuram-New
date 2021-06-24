@@ -63,14 +63,13 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @Transactional
-    public Person updatePerson(String id) {
-        return personDao.updatePerson(id);
+    public void updatePerson(Person person) {
+        personDao.updatePerson(person);
     }
 
     @Override
     @Transactional
     public void delete(String personId) {
-
         personDao.delete(personId);
     }
 
