@@ -15,13 +15,15 @@
           th:href="@{https://use.fontawesome.com/releases/v5.4.1/css/all.css}"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
           crossorigin="anonymous">
+
+    <link th:href="@{https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css}" rel="stylesheet">
 </head>
 
 <body>
 <div class="container my-5">
     <h3> Update Person</h3>
 
-    <form th:action="@{/person/updatePerson}" th:object="${person}" method="post">
+    <form th:action="@{/person/getPersonDetails}" th:object="${person}" method="post" enctype="multipart/form-data">
         <div class="row">
 
 
@@ -84,7 +86,7 @@
 
                             <div class="form-group col-md-12">
                                 <label for="dob1" class="col-form-label">Date of Birth</label>
-                                <input type="text" th:field="*{DOB}" class="form-control .dobSelect" id="dob1"
+                                <input type="text" th:field="*{DOB}" class="form-control dobSelect" id="dob1"
                                        placeholder="Date of Birth">
                             </div>
 
@@ -169,56 +171,65 @@
 
                                 <h3 class="text-center mt-3">Mobile Number</h3>
 
-                                <table class="table mt-3">
-                                    <thead>
-                                    <tr>
+                                <div class="table-responsive">
 
-                                        <th scope="col">Type</th>
-                                        <th scope="col">Mobile Number</th>
-                                        <th scope="col">Primary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                                    <table class="table align-middle mt-3" id="mobileNumberTable">
+                                        <thead>
+                                        <tr>
 
-                                    <tr th:each="mn,i : *{mobileNumbers}">
-                                        <td>
-                                            <div>
-                                                <select class="form-select" th:field="*{mobileNumbers[__${i.index}__].type}">
-                                                    <option th:each="var:${rd.get('typeMap').values()}"
-                                                            th:value="${var}"
-                                                            th:text="${var}">
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Mobile Number</th>
+                                            <th scope="col">Primary</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tb">
 
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </td>
+                                        <tr th:each="mn,i : *{mobileNumbers}">
+                                            <td class="align-top">
+                                                <div>
+                                                    <select class="form-select col-sm-6" th:field="*{mobileNumbers[__${i.index}__].type}">
+                                                        <option th:each="var:${rd.get('typeMap').values()}"
+                                                                th:value="${var}"
+                                                                th:text="${var}">
 
-                                        <td>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </td>
 
-                                            <div>
-                                                <input type="text" class="form-control"
-                                                       th:field="*{mobileNumbers[__${i.index}__].mobileNumber}"
-                                                       placeholder="Number"/>
-                                            </div>
+                                            <td class="align-middle">
 
-                                        </td>
+                                                <div>
+                                                    <input type="text" class="form-control col-sm-6"
+                                                           th:field="*{mobileNumbers[__${i.index}__].mobileNumber}"
+                                                           placeholder="Number"/>
+                                                </div>
 
-                                        <td>
+                                            </td>
 
-                                            <div>
-                                                <select class="form-select"
-                                                        th:field="*{mobileNumbers[__${i.index}__].primary}">
-                                                    <option th:each="var:${rd.get('primaryMap').values()}"
-                                                            th:value="${var}"
-                                                            th:text="${var}">
+                                            <td class="align-bottom">
 
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                                <div>
+                                                    <select class="form-select col-sm-6"
+                                                            th:field="*{mobileNumbers[__${i.index}__].primary}">
+                                                        <option th:each="var:${rd.get('primaryMap').values()}"
+                                                                th:value="${var}"
+                                                                th:text="${var}">
+
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div class="d-grid gap-2 d-md-block">
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -240,8 +251,34 @@
         th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js}"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+<!--<script th:src="@{/resources/static/js/jquery-3.6.0.min.js}"></script>-->
+<!--<script th:src="@{/resources/static/js/jquery-ui.min.js}"></script>-->
+
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.min.js}"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
 
 <script th:src="@{/resources/static/js/dobSelect.js}"></script>
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    let typeList = /*[[${rd.get('typeMap').values()}]]*/ "typeList";
+    let primaryList = /*[[${rd.get('primaryMap').values()}]]*/ "primaryList";
+    /*]]>*/
+
+</script>
+
+<script th:src="@{/resources/static/js/addRow.js}"></script>
+
 </body>
 
 </html>
