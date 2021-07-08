@@ -11,8 +11,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!--    <link href="assets/img/favicon.png" rel="icon">-->
+<!--    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -33,7 +33,7 @@
 
 <!--  ===== Search Area =====  -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark+">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,13 +63,13 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:action="@{/search}" th:method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
+
 
 
     <!-- ======= About Section ======= -->
@@ -92,7 +92,7 @@
                         </form>
 
                         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadImageStaticBackdrop">
-                            Upload Photo
+                            Update Photo
                         </button>
 
                     </div>
@@ -120,9 +120,11 @@
                                 <li><i class="bi bi-chevron-right"></i> <strong>Special Ability:</strong> <span th:text="${person.specialAbility}"></span></li>
                             </ul>
                         </div>
-                        <div class="row ">
+
+
+                        <div class="row">
                             <div class="col buttonMerge d-grid gap-2">
-                                <a th:href="" class="btn btn-lg btn-outline-primary" type="button" id="backButton"><i class="bi bi-chevron-double-left"></i> Back</a>
+                                <a th:href="@{/person/showFamily/{personId}(personId=${person.personId})}" class="btn btn-lg btn-outline-primary" type="button" id="backButton"><i class="bi bi-chevron-double-left"></i> Back</a>
                             </div>
                             <div class="col buttonMerge d-grid gap-2">
                                 <button class="btn btn-lg btn-outline-primary" type="button" id="mobileNumbers" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-telephone-forward-fill"></i> Mobile Numbers</button>
@@ -168,14 +170,18 @@
             </div>
         </div>
 
-        <div class="modal fade" id="uploadImageStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="uploadImageStaticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="uploadImageStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="uploadImageStaticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center font-f1" id="uploadImageStaticBackdropLabel">Upload New Image</h5>
+                        <h5 class="modal-title" id="uploadImageStaticBackdropLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+
 
                         <form th:action="@{/person/updatePhoto/{personId} (personId=${person.personId})}" method="post" enctype="multipart/form-data">
                             <div class="input-group mb-3">
@@ -189,10 +195,15 @@
                             </div>
 
                         </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
 
     </section>
 

@@ -31,12 +31,12 @@ public class BeanProvider {
         return new Person();
     }
 
-    @Bean
-    public EntityManager entityManagerProvider(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PERSISTENCE");
-        EntityManager em = emf.createEntityManager();
-        return em;
-    }
+//    @Bean
+//    public EntityManager entityManagerProvider(){
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PERSISTENCE");
+//        EntityManager em = emf.createEntityManager();
+//        return em;
+//    }
 
 
 

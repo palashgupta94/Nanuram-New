@@ -1,7 +1,5 @@
 package com.projectNanuram.config;
 
-import com.projectNanuram.service.HibernateSearchService;
-import com.projectNanuram.service.HibernateSearchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -17,15 +15,15 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:datasource.properties")
-//@EnableTransactionManagement
+@EnableTransactionManagement
 @ComponentScan(basePackages = {"com.projectNanuram"})
 public class AppContext {
 
     @Autowired
     private Environment environment;
 
-    @Autowired
-    private EntityManager entityManager;
+//    @Autowired
+//    private EntityManager entityManager;
 
 
     @Bean
@@ -84,12 +82,12 @@ public class AppContext {
 
     }
 
-    @Bean
-    HibernateSearchService hibernateSearchService(){
-        HibernateSearchService hss = new HibernateSearchServiceImpl(entityManager);
-        hss.initializeHibernateSearch();
-        return hss;
-    }
+//    @Bean
+//    HibernateSearchService hibernateSearchService(){
+//        HibernateSearchService hss = new HibernateSearchServiceImpl(entityManager);
+//        hss.initializeHibernateSearch();
+//        return hss;
+//    }
 
 
 
