@@ -8,6 +8,10 @@ import org.springframework.context.annotation.Bean;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 @Component
 public class BeanProvider {
 
@@ -26,5 +30,14 @@ public class BeanProvider {
     public Person personBeanProvider(){
         return new Person();
     }
+
+    @Bean
+    public EntityManager entityManagerProvider(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PERSISTENCE");
+        EntityManager em = emf.createEntityManager();
+        return em;
+    }
+
+
 
 }

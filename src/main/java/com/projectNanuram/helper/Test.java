@@ -219,8 +219,14 @@ public class Test {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public static void deleteFile(){
 
-
+        String[] testDeletes = {"test1.jpg","test2.jpg","test3.jpg","test4.jpg","test5.jpg","test6.jpg"};
+        for(String str : testDeletes){
+            Processor.deleteFile(str);
+            System.out.println("deleted file " +str );
+        }
     }
 
 
@@ -232,6 +238,8 @@ public class Test {
         //            resize1();
 //        resize2();
 
-        resize3();
+//        resize3();
+
+        deleteFile();
     }
 }

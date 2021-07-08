@@ -16,8 +16,8 @@ public class MobileNumbers {
     private String id;
 
     @Column(name = "mobile_number" , unique = false)
-    @Nullable
-    @NotEmpty
+//    @Nullable
+//    @NotEmpty
     private String mobileNumber;
     @Column(name = "number_type")
     private NumberType type;

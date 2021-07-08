@@ -1,15 +1,17 @@
 package com.projectNanuram.helper;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +118,25 @@ public class ImageHelper {
         String hostUrl = PropertiesResolver.getInstance().getHostUrl();
         String url = hostUrl+list.get(0)+"/"+str[0]+"_"+list.get(1)+"_"+list.get(2)+str[1];
         return url;
+    }
+
+    public static CommonsMultipartFile fileT0CommonsMultipartFile(String path){
+
+        File file = new File(path);
+
+        CommonsMultipartFile multipart_File = null;
+        try{
+            FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
+            InputStream is = new FileInputStream(file);
+            OutputStream os = fileItem.getOutputStream();
+            IOUtils.copy(is , os);
+
+            multipart_File = new CommonsMultipartFile(fileItem);
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        return multipart_File;
     }
 
 

@@ -1,113 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:h3th="http://www.w3.org/1999/html">-->
-<!--  <head>-->
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--    <title>Person Profile</title>-->
-
-<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/bootstrap.min.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/bootstrap.min.css}">-->
-<!--    &lt;!&ndash; Fonts &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/fonts/font-awesome.min.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/fonts/font-awesome.min.css}">-->
-<!--    &lt;!&ndash; Icon &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/fonts/simple-line-icons.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/fonts/simple-line-icons.css}">-->
-<!--    &lt;!&ndash; Slicknav &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/slicknav.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/slicknav.css}">-->
-<!--    &lt;!&ndash; Nivo Lightbox &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/nivo-lightbox.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/nivo-lightbox.css}">-->
-<!--    &lt;!&ndash; Animate &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/animate.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/animate.css}">-->
-<!--    &lt;!&ndash; Main Style &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/main.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/main.css}">-->
-<!--    &lt;!&ndash; Responsive Style &ndash;&gt;-->
-<!--    <link rel="stylesheet" type="text/css" href="/resources/static/meetMe/assets/css/responsive.css"-->
-<!--    th:href="@{/resources/static/meetMe/assets/css/responsive.css}">-->
-
-<!--  </head>-->
-<!--  <body>-->
-
-<!--    &lt;!&ndash; About Section Start &ndash;&gt;-->
-<!--    <section id="about" class="section-padding">-->
-<!--      <div class="container">-->
-<!--        <div class="row">-->
-<!--          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
-<!--            <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">-->
-<!--              <img class="img-fluid" src=""-->
-<!--                   th:src="@{${person.imgUrl}}" alt="personImage">-->
-<!--            </div>-->
-<!--          </div> -->
-<!--          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
-<!--            <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">-->
-<!--              <h3 th:text="${person.fullName}"></h3>-->
-<!--              <div class="about-profile">-->
-<!--                <ul class="admin-profile">-->
-<!--&lt;!&ndash;                  <li><span class="pro-title"> Name </span> <span th:text="" class="pro-detail"></span></li>&ndash;&gt;-->
-<!--                  <li><span class="pro-title"> Date of Birth </span> <span th:text="${person.DOB}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Occupation </span> <span th:text="${person.occupation}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Marital Status </span> <span th:text="${person.maritalStatus}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Mother's Gotra </span> <span th:text="${person.motherGotra}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Family's Gotra </span> <span th:text="${person.familyGotra}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Special Ability</span> <span th:text="${person.specialAbility}" class="pro-detail"></span></li>-->
-<!--                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>-->
-<!--                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>-->
-<!--                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>-->
-<!--                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>-->
-<!--                  <li><span class="pro-title"> Freelance </span> <span class="pro-detail">Available</span></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--              <a href="#" class="btn btn-common"><i class="icon-paper-clip"></i> Download Resume</a>-->
-<!--              <a href="#" class="btn btn-danger"><i class="icon-speech"></i> Contact Me</a>-->
-<!--            </div>-->
-<!--          </div>   -->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
-<!--    &lt;!&ndash; About Section End &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Go to Top Link &ndash;&gt;-->
-<!--    &lt;!&ndash; <a href="#" class="back-to-top">-->
-<!--    	<i class="icon-arrow-up"></i>-->
-<!--    </a> &ndash;&gt;-->
-
-<!--    &lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery-min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery-min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/popper.min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/popper.min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/bootstrap.min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/bootstrap.min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery.mixitup.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery.mixitup.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery.counterup.min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery.counterup.min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/waypoints.min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/waypoints.min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/wow.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/wow.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery.nav.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery.nav.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery.easing.min.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery.easing.min.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/nivo-lightbox.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/nivo-lightbox.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/jquery.slicknav.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/jquery.slicknav.js}"></script>-->
-<!--    <script src="/resources/static/meetMe/assets/js/main.js"-->
-<!--    th:src="@{/resources/static/meetMe/assets/js/main.js}"></script>-->
-<!--     -->
-<!--  </body>-->
-<!--</html>-->
-
-
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:spanth="http://www.w3.org/1999/html">
@@ -141,6 +31,47 @@
 
 <main id="main">
 
+<!--  ===== Search Area =====  -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark+">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:action="@{/search}" th:method="get">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">
@@ -152,6 +83,20 @@
             <div class="row">
                 <div class="col-lg-4">
                     <img src="" class="img-fluid" alt="" th:src="${person.imgUrl}">
+
+                    <div class="d-flex justify-content-evenly mt-2">
+
+<!--                        <a th:href="@{/person/updatePhoto/{personId} (personId=${person.getPersonId()})}" class="btn btn-outline-primary " type="button">update Photo</a>-->
+                        <form th:action="@{/person/deletePhoto/{personId} (personId=${person.getPersonId()})}" method="post">
+                        <button class="btn btn-outline-danger " type="submit">Remove Photo</button>
+                        </form>
+
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadImageStaticBackdrop">
+                            Upload Photo
+                        </button>
+
+                    </div>
+
                 </div>
                 <div class="col-lg-8 pt-4 pt-lg-0 content">
                     <h3 th:text="${person.fullName}"></h3>
@@ -173,18 +118,17 @@
                                 <li><i class="bi bi-chevron-right"></i> <strong>Occupation:</strong> <span th:text="${person.occupation}"></span></li>
                                 <li><i class="bi bi-chevron-right"></i> <strong>Marital Status:</strong> <span th:text="${person.maritalStatus}"></span></li>
                                 <li><i class="bi bi-chevron-right"></i> <strong>Special Ability:</strong> <span th:text="${person.specialAbility}"></span></li>
-<!--                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>-->
                             </ul>
                         </div>
                         <div class="row ">
                             <div class="col buttonMerge d-grid gap-2">
-                                <button class="btn btn-lg btn-outline-primary" type="button" id="backButton"><i class="bi bi-chevron-double-left"></i> Back</button>
+                                <a th:href="" class="btn btn-lg btn-outline-primary" type="button" id="backButton"><i class="bi bi-chevron-double-left"></i> Back</a>
                             </div>
                             <div class="col buttonMerge d-grid gap-2">
                                 <button class="btn btn-lg btn-outline-primary" type="button" id="mobileNumbers" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-telephone-forward-fill"></i> Mobile Numbers</button>
                             </div>
                             <div class="col buttonMerge d-grid gap-2">
-                                <button class="btn btn-lg btn-outline-secondary" type="button" id="editButton">Edit Person</button>
+                                <a th:href="@{/person/showUpdate/{personId}(personId=${person.personId})}" class="btn btn-lg btn-outline-secondary" type="button" id="editButton">Edit Person</a>
                             </div>
 
                         </div>
@@ -223,6 +167,33 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="uploadImageStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="uploadImageStaticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center font-f1" id="uploadImageStaticBackdropLabel">Upload New Image</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form th:action="@{/person/updatePhoto/{personId} (personId=${person.personId})}" method="post" enctype="multipart/form-data">
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="inputFile"  name="newImage">
+                            </div>
+
+                            <div class="row">
+                                <div class="d-grid mt-3">
+                                    <button class="btn btn-outline-danger" type="submit">Update</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
 </main>
@@ -230,7 +201,7 @@
 <!-- Vendor JS Files -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-<script th:src="@{/resources/static/js/dobSelect.js}"></script>
+
 </body>
 
 </html>

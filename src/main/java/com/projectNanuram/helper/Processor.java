@@ -4,14 +4,19 @@ import com.projectNanuram.entity.Address;
 import com.projectNanuram.entity.Family;
 import com.projectNanuram.entity.MobileNumbers;
 import com.projectNanuram.entity.Person;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Processor {
 
@@ -42,12 +47,11 @@ public class Processor {
 
                         imageProcessor(person);
 
-                        if(person.getSpecialAbility().equalsIgnoreCase("True")){
+                        if (person.getSpecialAbility().equalsIgnoreCase("True")) {
 
                             person.setSpeciallyAble(true);
 
-                        }
-                        else{
+                        } else {
                             person.setSpeciallyAble(false);
                         }
 
@@ -64,13 +68,13 @@ public class Processor {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    private static void imageProcessor(Person person) {
+    public static void imageProcessor(Person person) {
         String path = null;
         try {
 
             CommonsMultipartFile file = person.getImageFile();
 
-            if(file != null && file.getSize() > 0) {
+            if (file != null && file.getSize() > 0) {
 
                 String filename = file.getOriginalFilename();
                 System.out.println(file.getOriginalFilename());
@@ -89,8 +93,7 @@ public class Processor {
 
                 person.setImgUrl(newFileName);
                 ImageHelper.resizeImage(newFileName);
-            }
-            else{
+            } else {
                 person.setImgUrl("ina.jpg");
             }
 
@@ -172,4 +175,65 @@ public class Processor {
         }
         return newList;
     }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    public static void imageProcessor(Person person, CommonsMultipartFile file) {
+
+        String name = file.getOriginalFilename();
+        System.out.println("File name --> " + name);
+
+        try {
+
+            if(person.getImgUrl().equalsIgnoreCase("ina.jpg")){
+                person.setImageFile(file);
+                imageProcessor(person);
+            }
+            else{
+                    System.out.println("Inside imageProcessor(personId , Multipartfile)");
+                    System.out.println("CommonsMultipartFile name = " + file.getOriginalFilename());
+                    deleteFile(person.getImgUrl());
+                    person.setImageFile(file);
+                    imageProcessor(person);
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    public static void deleteFile(String fileName) {
+
+        boolean flag = false;
+        Map<String, List<String>> imageProperties = PropertiesResolver.getInstance().getImageProperties();
+        System.out.println("Inside deleteFileMethod");
+
+        String[] filesToDelete = {
+                "H:\\uploads\\" + fileName,
+                ImageHelper.getFilePath(fileName , imageProperties.get("person")),
+                ImageHelper.getFilePath(fileName , imageProperties.get("family"))
+
+        };
+
+        try {
+
+            for (String files : filesToDelete) {
+
+                if(Files.deleteIfExists(Paths.get(files))) {
+                    flag = true;
+                    System.out.println("file deleted ---> " + files);
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

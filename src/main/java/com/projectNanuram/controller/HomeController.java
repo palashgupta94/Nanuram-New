@@ -1,6 +1,5 @@
 package com.projectNanuram.controller;
 
-import com.projectNanuram.Dao.daoInterfaces.FamilyDao;
 import com.projectNanuram.entity.*;
 import com.projectNanuram.helper.*;
 import com.projectNanuram.service.FamilyService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -196,7 +194,7 @@ public class HomeController {
         }
 
         model.addAttribute("family", family);
-        return "index";
+        return "showFamily";
 
 
     }

@@ -1,5 +1,8 @@
 package com.projectNanuram.entity;
 
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -14,6 +17,8 @@ import java.util.List;
 
 //@Transactional
 @Entity
+@Indexed
+
 
 public class Person {
 
@@ -96,6 +101,7 @@ public class Person {
     private boolean isSenior;
     private boolean isHead=false;
 
+    @IndexedEmbedded
     @OneToMany (cascade = CascadeType.ALL , fetch = FetchType.EAGER, mappedBy = "person")
     private List<MobileNumbers> mobileNumbers = new ArrayList<>();
 

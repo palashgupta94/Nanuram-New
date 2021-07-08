@@ -4,14 +4,23 @@ import com.projectNanuram.entity.Family;
 import com.projectNanuram.entity.MobileNumbers;
 import com.projectNanuram.entity.Person;
 import com.projectNanuram.helper.ImageHelper;
+import com.projectNanuram.helper.Processor;
 import com.projectNanuram.helper.PropertiesResolver;
 import com.projectNanuram.helper.ReferenceHelper;
 import com.projectNanuram.service.PersonService;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +29,8 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+    public static final String BLANK_IMAGE = "ina.jpg";
 
 
     @GetMapping("/getPersonDetails/{personId}")
@@ -83,8 +94,17 @@ public class PersonController {
         String personId1 = person.getPersonId();
         System.out.println(person.getFamily());
 
-        for(MobileNumbers mn : person.getMobileNumbers()){
+        List<MobileNumbers> newMobileNumberList = new ArrayList<>();
+        for(MobileNumbers number : person.getMobileNumbers()) {
 
+            if (number.getMobileNumber() != "" && number.getMobileNumber() != null) {
+
+                newMobileNumberList.add(number);
+            }
+        }
+            person.setMobileNumbers(newMobileNumberList);
+
+        for(MobileNumbers mn : person.getMobileNumbers()){
             mn.setId(person.getPersonId()+person.getMobileNumbers().indexOf(mn));
             mn.setPerson(person);
 
@@ -141,7 +161,39 @@ public class PersonController {
         }
 
         model.addAttribute(family);
-        return "index";
+        return "showFamily";
+     }
+
+     @PostMapping("/updatePhoto/{personId}")
+//     @ResponseBody
+     public String updatePhoto(@PathVariable("personId")String personId, @RequestParam("newImage") CommonsMultipartFile file){
+
+        Person person = personService.getPersonDetails(personId);
+
+//        System.out.println("file name ---> " +file.getOriginalFilename());
+
+        if((file != null) && (file.getSize() > 0)) {
+
+            Processor.imageProcessor(person, file);
+            personService.savePerson(person);
+        }
+
+         return "redirect:/person/getPersonDetails/"+personId;
+     }
+
+     @PostMapping("/deletePhoto/{personId}")
+     public String deletePhoto(@PathVariable("personId")String personId){
+
+        Person person = personService.getPersonDetails(personId);
+
+        if(!person.getImgUrl().equalsIgnoreCase(BLANK_IMAGE)) {
+
+            String imgUrl = person.getImgUrl();
+            Processor.deleteFile(imgUrl);
+            person.setImgUrl("ina.jpg");
+            personService.savePerson(person);
+        }
+         return "redirect:/person/getPersonDetails/"+personId;
      }
 
 }
