@@ -3,6 +3,7 @@ package com.projectNanuram.controller;
 import com.projectNanuram.entity.Family;
 import com.projectNanuram.entity.MobileNumbers;
 import com.projectNanuram.entity.Person;
+import com.projectNanuram.filesGenerator.ExcelGenerator;
 import com.projectNanuram.helper.ImageHelper;
 import com.projectNanuram.helper.Processor;
 import com.projectNanuram.helper.PropertiesResolver;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -194,6 +196,18 @@ public class PersonController {
             personService.savePerson(person);
         }
          return "redirect:/person/getPersonDetails/"+personId;
+     }
+
+     @GetMapping("/exportExcel/{personId}")
+     public void generateExcelFile(@PathVariable("personId") String personId , HttpServletResponse response){
+        Person person = personService.getPersonDetails(personId);
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attatchment; filename=excel_"+personId+".xlsx";
+        response.setHeader(headerKey , headerValue);
+
+         ExcelGenerator excelGenerator = new ExcelGenerator("excel"+personId);
+         excelGenerator.export(response , person);
      }
 
 }
